@@ -28,9 +28,15 @@ public class AppTest {
     public void machin (){
     	assertTrue(StringUtils.levenshteinDistance("machins", "machine")==1);
     }
+ @org.junit.Test
  	public void robert (){
  		assertTrue(StringUtils.levenshteinDistance("robert", "robert")==0);
  }
+ @org.junit.Test
+ 	public void testNull(){
+ 		assertTrue(StringUtils.levenshteinDistance(null, "route")==-1);
+
+ 	}
  
 }
    
