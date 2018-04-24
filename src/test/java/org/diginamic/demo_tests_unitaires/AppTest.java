@@ -1,5 +1,8 @@
 package org.diginamic.demo_tests_unitaires;
 
+import static org.junit.Assert.assertTrue;
+
+import dev.utils.StringUtils;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -7,32 +10,30 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+public class AppTest {
+	
+ @org.junit.Test
+    public void lapin (){
+    	assertTrue(StringUtils.levenshteinDistance("lapin", "lapins")==1);
     }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
+ @org.junit.Test
+ 	public void chien (){
+    	assertTrue(StringUtils.levenshteinDistance("chien", "chiens")==1); 	
     }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+ @org.junit.Test
+ 	public void distance (){
+    	assertTrue(StringUtils.levenshteinDistance("distance", "instance")==2);
     }
+ @org.junit.Test
+    public void machin (){
+    	assertTrue(StringUtils.levenshteinDistance("machins", "machine")==1);
+    }
+ 	public void robert (){
+ 		assertTrue(StringUtils.levenshteinDistance("robert", "robert")==0);
+ }
+ 
 }
+   
+    	
+    	
+    	
