@@ -29,10 +29,17 @@ public class App {
 
 	public void demarrer() {
 		afficherTitre();
+		
 	}
 
 	protected void evaluer(String expression) {
+		
+		if(expression.endsWith("fin")){
+			LOG.info("Au revoir :-(");
+		}
+				
 		LOG.info(expression + "=" + calculatrice.additionner(expression));
+		
 		
 	}
 

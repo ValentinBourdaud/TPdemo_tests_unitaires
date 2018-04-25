@@ -1,6 +1,6 @@
 package dev.service;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -44,4 +44,6 @@ public class CalculServiceTest {
 
 	
 }
+
+	
 }

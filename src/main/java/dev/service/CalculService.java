@@ -13,6 +13,7 @@ public class CalculService {
 
 		LOG.debug("Evaluation de l'expression" + expression);
 
+		
 		String[] tab = expression.split("\\+");
 
 		int somme = 0;
