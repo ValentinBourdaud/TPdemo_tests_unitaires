@@ -9,8 +9,14 @@ public class CalculService {
 
 	public int additionner(String expression){
 		
-		LOG.debug("Evaluation de l'expression <expression>");
-		
-		return 0;
+		LOG.debug("Evaluation de l'expression" + expression);
+		String [] tab =  expression.split("\\+");
+		int somme = 0;
+		for(int i=0;i<tab.length;i++){
+
+		somme += Integer.parseInt(tab[i]);}
+		return somme;
+
 	}
+
 }
