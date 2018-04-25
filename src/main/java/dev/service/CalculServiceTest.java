@@ -20,7 +20,7 @@ public class CalculServiceTest {
 		
 		LOG.info("Lorsque j'évalue l'addition de l'expression 1+3+4"); 
 
-		int somme = cs.additionner("1+3+4");
+		int somme = cs.additionner("4");
 
 		LOG.info("Alors j'obtiens le résultat 8");
 		assertTrue(somme==8);

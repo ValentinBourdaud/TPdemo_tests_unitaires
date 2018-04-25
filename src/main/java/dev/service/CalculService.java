@@ -11,7 +11,7 @@ public class CalculService {
 		
 		LOG.debug("Evaluation de l'expression" + expression);
 		String [] tab =  expression.split("\\+");
-		int somme = 0;
+		int somme =0 ;
 		for(int i=0;i<tab.length;i++){
 
 		somme += Integer.parseInt(tab[i]);}
