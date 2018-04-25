@@ -1,7 +1,8 @@
 package dev.console;
 
-import dev.service.CalculService;
 import java.util.Scanner;
+
+import dev.service.CalculService;
 
 public class AppLauncher {
 

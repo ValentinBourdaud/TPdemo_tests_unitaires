@@ -32,7 +32,8 @@ public class App {
 	}
 
 	protected void evaluer(String expression) {
-
+		LOG.info(expression + "=" + calculatrice.additionner(expression));
+		
 	}
 
 }
