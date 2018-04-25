@@ -1,14 +1,20 @@
 package dev.console;
 
-import dev.service.CalculService;
-
 import java.util.Scanner;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import dev.service.CalculService;
 
 public class App {
 
 	private Scanner scanner;
 
 	private CalculService calculatrice;
+	
+	private static final Logger LOG = LoggerFactory.getLogger(App.class);
+
 
 	public App(Scanner scanner, CalculService calculatrice) {
 
@@ -17,6 +23,8 @@ public class App {
 	}
 
 	protected void afficherTitre() {
+		LOG.info("**** Application Calculatrice ****"); 
+
 	}
 
 	public void demarrer() {
