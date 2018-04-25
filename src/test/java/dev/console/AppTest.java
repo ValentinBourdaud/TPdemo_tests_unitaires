@@ -1,6 +1,7 @@
 package dev.console;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.contrib.java.lang.system.TextFromStandardInputStream.emptyStandardInputStream;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -11,6 +12,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
+import org.junit.contrib.java.lang.system.TextFromStandardInputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +25,9 @@ public class AppTest {
 
 	@Rule
 	public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
+	
+	@Rule
+	public TextFromStandardInputStream systemInMock = emptyStandardInputStream();
 
 	private App app;
 	private CalculService calculService;
@@ -92,10 +97,31 @@ public class AppTest {
 	}
 	
 	@Test
-	public void testEvaluerCalculFin() throws Exception {
-		LOG.info("Veuillez saisir une expression :");
-		String expression = "1+2 fin";
+	public void testDemarrerCalculFin() throws Exception {
+		
+		String expression = "1+2";
+		systemInMock.provideLines(expression, "fin");
+		this.app = new App(new Scanner(System.in), calculService);
+		
 		when(calculService.additionner(expression)).thenReturn(3);
+		this.app.demarrer();
+		
+		verify(this.calculService).additionner(expression);
+		
+		String logConsole = systemOutRule.getLog();
+		
+		assertThat(logConsole).contains("**** Application Calculatrice ****"
+		+ "Veuillez saisir une expression :\r \n"
+		+ "1+2=3\r\nVeuillez saisir une expression :\r\n"
+		+ "Au revoir :-(");
+
+		
+	}
+	@Test
+	public void testEvaluerAAAA() throws Exception {
+		LOG.info("Veuillez saisir une expression :");
+		String expression = "AAAA";
+		when(calculService.additionner(expression)).thenThrow(new CalculException());
 		LOG.info("Lorsque la méthode evaluer est invoquée");
 		this.app.evaluer(expression);
 		LOG.info("Alors le service est invoqué avec l'expression{}", expression);
@@ -103,8 +129,6 @@ public class AppTest {
 		LOG.info("Alors dans la console s'affiche 1+2=3 Au revoir :-(");
 		assertThat(systemOutRule.getLog()).contains("1+2=3");
 		assertThat(systemOutRule.getLog()).contains("Au revoir :-(");
-
-		
 	}
 
 	@Test

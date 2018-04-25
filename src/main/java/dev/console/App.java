@@ -28,15 +28,19 @@ public class App {
 	}
 
 	public void demarrer() {
-		afficherTitre();
+		Scanner scanner = new Scanner(System.in);
+		while(scanner.hasNext()){
+			LOG.info("Veuillez saisir une expression;");
+			String expression = scanner.next();
+			if(expression.equals("fin"))
+				LOG.info("Au revoir :-(");
+			else evaluer(expression);
+			
+		}
 		
 	}
 
 	protected void evaluer(String expression) {
-		
-		if(expression.endsWith("fin")){
-			LOG.info("Au revoir :-(");
-		}
 				
 		LOG.info(expression + "=" + calculatrice.additionner(expression));
 		
